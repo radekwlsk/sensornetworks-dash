@@ -128,20 +128,20 @@ A network topology using such key distribution protocol can be simulated in [**N
         html.Div([
             html.H2("Network Graph"),
             dcc.Markdown("""\
-    The graph below updates automatically after change of the arguments with sliders below. 
-    
-    Right part shows the network's coverage (direct and total). 
-    
-    > Note that scale is not always 0-100%
-    
-    Nodes belonging to one component have the same colour, sometimes the nodes can overlap as their coordinates on the 
-    network grid are selected at random. Links between nodes are marked as edges of the graph. 
-    
-    On hover over a node its details are displayed: 
-    
-      - unique id of the node,
-      - coordinates on the grid in *(x, y)* form,
-      - list of node's neighbours (as id's) if any.
+The graph below updates automatically after change of the arguments with sliders below. 
+
+Right part shows the network's coverage (direct and total). 
+
+> Note that scale is not always 0-100%
+
+Nodes belonging to one component have the same colour, sometimes the nodes can overlap as their coordinates on the 
+network grid are selected at random. Links between nodes are marked as edges of the graph. 
+
+On hover over a node its details are displayed: 
+
+  - unique id of the node,
+  - coordinates on the grid in *(x, y)* form,
+  - list of node's neighbours (as id's) if any.
     """),
             html.Div([
                 slider("Nodes amount:", NODES_RANGE2, 'network-nodes-slider'),
