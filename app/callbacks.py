@@ -54,7 +54,7 @@ def get_figure(x_range, direct_coverage, coverage, components):
             anchor='x2'
         ),
         margin=dict(l=50, b=10, t=10, r=50),
-        height=500
+        height=480
     ))
 
 
@@ -162,5 +162,5 @@ def generate_network_graph(n, p, k, x, r):
             anchor='x2'
         ),
         margin=dict(l=30, b=30, t=30, r=30),
-        height=900,
+        height=720,
     ))
