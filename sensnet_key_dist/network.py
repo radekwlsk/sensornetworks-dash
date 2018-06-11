@@ -1,3 +1,4 @@
+from random import randint
 from secrets import randbits, randbelow
 import numpy as np
 import plotly.offline as py
@@ -10,7 +11,7 @@ class SensorNetwork:
 
     def __init__(self, n, k, s, x, r):
         """
-        SensorNetwork represents the sensor network using Chan, Perrig, Song key distribution scheme
+        SensorNetwork represents the sensor network using Eschenauer, Gligor key distribution scheme
         :param n: number of nodes
         :param k: number of randomly selected keys stored in each node
         :param s: size of key pool
@@ -79,22 +80,24 @@ class SensorNetwork:
                 self.components.append(component)
 
     def create_graph(self):
-        nodes = go.Scatter(
-            x=[n.x for n in self.nodes.values()],
-            y=[n.y for n in self.nodes.values()],
+        colors = ['rgb({},{},{})'.format(randint(0, 255), randint(0, 255), randint(0, 255)) for _ in self.components]
+
+        nodes = [go.Scatter(
+            x=[self.nodes[i].x for i in c],
+            y=[self.nodes[i].y for i in c],
             mode='markers',
             name='nodes',
-            text=[str(n) for n in self.nodes.values()],
+            text=[str(self.nodes[i]) for i in c],
             hoverinfo='text',
-            marker=dict(size=10, color='rgb(0,0,0)')
-        )
+            marker=dict(size=10, color=colors[i])
+        ) for i, c in enumerate(self.components)]
         edges = [go.Scatter(
             x=[self.nodes[a].x, self.nodes[b].x],
             y=[self.nodes[a].y, self.nodes[b].y],
             mode='lines',
             name='({}, {})'.format(a, b)
         ) for (a, b) in self.edges]
-        data = edges + [nodes]
+        data = edges + nodes
         layout = go.Layout(showlegend=False,
                            hovermode='closest',
                            width=900,
