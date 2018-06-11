@@ -20,11 +20,12 @@ class Node:
                     self.shared_keys.update({node.id: [k]})
 
     def __str__(self):
-        return "Node {} ({}, {}), neighbours: {}".format(
+        neighbours = ", neighbours: {}".format(', '.join([str(n) for n in self.neighbours]))
+        return "Node {} ({}, {}){}".format(
             self.id,
             self.x,
             self.y,
-            ', '.join([str(n) for n in self.neighbours])
+            neighbours if self.neighbours else ''
         )
 
     def __repr__(self):
