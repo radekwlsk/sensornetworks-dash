@@ -5,4 +5,4 @@ dash-renderer==0.13.0
 flask-caching==1.4.0
 numpy==1.14.4
 plotly==2.7.0
-uwsgi==2.0.17
+uwsgi==2.0.22
